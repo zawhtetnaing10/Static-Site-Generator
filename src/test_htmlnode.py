@@ -16,7 +16,7 @@ class TestHTMLNode(unittest.TestCase):
 
     def test_none_props(self):
         html_node = HTMLNode(tag="h1", value="Welcome")
-        self.assertEqual(html_node.props_to_html(), None)
+        self.assertEqual(html_node.props_to_html(), "")
 
     def test_default_none(self):
         html_node = HTMLNode(tag="h1", value="Welcome")
