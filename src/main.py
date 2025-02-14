@@ -1,32 +1,23 @@
 from textnode import TextNode
 from textnode import TextType
-from leafnode import LeafNode
-from parentnode import ParentNode
+from split_nodes_delimiter import split_nodes_delimiter
 
 
 def main():
-    # textnode = TextNode("This is a text node",
-    #                     TextType.BOLD_TEXT, "https://www.boot.dev")
-    # print(textnode)
+    text_node = TextNode(
+        text="This is a **bold text**. I'm off. This is an *italic text*. This is **another bold text**. This is `The CODE`.", text_type=TextType.TEXT)
+    another_text_node = TextNode(
+        text="Another text node with `THE CODE AGAIN`", text_type=TextType.TEXT)
+    input = [text_node, another_text_node]
 
-    # leaf_node = LeafNode(tag="a", value="Click me!")
-    # print(leaf_node)
+    delimiters = {"**": TextType.BOLD_TEXT,
+                  "*": TextType.ITALIC_TEXT, "`": TextType.CODE}
+    result = []
 
-    parent_node = ParentNode(
-        "p",
-        [
-            ParentNode("div", [
-                LeafNode("Hello this is a div", tag="p"),
-                LeafNode("Click me here", tag="a", props={
-                         "href": "https://www.google.com"})
-            ], props={"id": "_inner"}),
-            LeafNode("Bold text", tag="b"),
-            LeafNode("Normal text", tag=None),
-            LeafNode("italic text", tag="i"),
-            LeafNode("Normal text", tag=None),
-        ],
-    )
-    print(parent_node.to_html())
+    for delimiter_key in delimiters:
+        result = split_nodes_delimiter(
+            input, delimiter_key, delimiters[delimiter_key])
+    print(f"Final result =====> {result}")
 
 
 main()

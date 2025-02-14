@@ -10,7 +10,7 @@ from text_node_to_html_node import text_node_to_html_node
 class TestTextNodeToHtmlNode(unittest.TestCase):
     def test_text_node_to_html_node_normal(self):
         text_node = TextNode(text="This is a normal text",
-                             text_type=TextType.NORMAL_TEXT)
+                             text_type=TextType.TEXT)
         correct_html = "This is a normal text"
         self.assertEqual(text_node_to_html_node(
             text_node).to_html(), correct_html)
