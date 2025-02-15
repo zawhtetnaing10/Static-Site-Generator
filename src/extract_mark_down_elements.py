@@ -10,5 +10,5 @@ def extract_mark_down_images(text):
 
 def extract_mark_down_links(text):
     regex_for_anchor_text = r"\[(.*?)\]"
-    regex_for_link = r"https:\/\/www\.[\w.-]+(?:\/[@\w-]*)?"
+    regex_for_link = r"https?:\/\/[\w.-]+(?:\/[\w\-.%?=&#@]*)?"
     return list(zip(re.findall(regex_for_anchor_text, text), re.findall(regex_for_link, text)))
