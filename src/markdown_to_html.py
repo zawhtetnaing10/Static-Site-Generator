@@ -12,8 +12,8 @@ HEADING_AND_TAGS = {"# ": "h1", "## ": "h2", "### ": "h3",
 
 def markdown_to_html(markdown):
     blocks = markdown_to_blocks(markdown)
-    htmls = list(map(lambda block: block_to_html(block).to_html(), blocks))
-    result = f'<div>{"".join(htmls)}</div>'
+    html_nodes = list(map(lambda block: block_to_html(block), blocks))
+    result = ParentNode("div", children=html_nodes)
     return result
 
 

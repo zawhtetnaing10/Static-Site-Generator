@@ -21,7 +21,7 @@ class TestMarkdownToHtml(unittest.TestCase):
 This is a paragraph. Nothing more.
 """
         correct_html = '<div><h1>This is a <b>bold heading</b>. This one is <i>italic</i> as well. This is an image. <img src="https://www.gstatic.com/webp/gallery/4.sm.jpg" alt="image in heading"></img></h1><blockquote>This is a quote.</blockquote><ul><li>This is a the first item</li><li>This is the second item</li><li>This is the third item</li></ul><ol><li>This is the first ordered item</li><li>This is the second ordered item</li></ol><pre><code>v=10print(v)</code></pre><p>This is a paragraph. Nothing more.</p></div>'
-        self.assertEqual(markdown_to_html(markdown), correct_html)
+        self.assertEqual(markdown_to_html(markdown).to_html(), correct_html)
 
     def test_mark_down_to_html_two(self):
         markdown = """
@@ -33,4 +33,4 @@ This is a paragraph. Nothing more.
 This is a paragraph. Nothing more.
 """
         correct_html = "<div><h6>This is a <b>bold heading</b>.</h6><ol><li>This is the first ordered item</li><li>This is the second ordered item</li></ol><p>This is a paragraph. Nothing more.</p></div>"
-        self.assertEqual(markdown_to_html(markdown), correct_html)
+        self.assertEqual(markdown_to_html(markdown).to_html(), correct_html)
