@@ -5,12 +5,10 @@ import shutil
 
 
 def generate_page_recursive(dir_path_content, template_path, dest_dir_path):
-    print(f"Current directory ====> {dir_path_content}")
     paths = os.listdir(dir_path_content)
 
     for path in paths:
         inner_path = f"{dir_path_content}/{path}"
-        print(f"Inner Path =====> {inner_path}")
 
         splitted_paths = inner_path.split("/")
         splitted_paths[0] = dest_dir_path
@@ -18,7 +16,6 @@ def generate_page_recursive(dir_path_content, template_path, dest_dir_path):
 
         if os.path.exists(inner_path) and os.path.isfile(inner_path) and inner_path.endswith(".md"):
             destination_file_path = destination_path.replace(".md", ".html")
-            print(f"Destination file path {destination_file_path}")
             generate_page(inner_path, template_path, destination_file_path)
         else:
             if os.path.exists(destination_path):
