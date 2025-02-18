@@ -5,7 +5,7 @@ from extract_mark_down_elements import extract_mark_down_links
 import re
 
 FULL_IMAGES_REGEX = r"!\[[^\]]*\]\(https?:\/\/[\w.-]+(?:\/[\w\-.%]+)*\.(?:jpg|jpeg|png|gif|webp|bmp|svg)\)"
-FULL_LINKS_REGEX = r"\[[^\]]*\]\(https?:\/\/[^\s)]+\)"
+FULL_LINKS_REGEX = r"\[[^\]]+\]\(\s*(?:https?:\/\/[^\s)]+|\/[\w\-.%?=&#@]+|\.\.?\/[\w\-.%?=&#@]*|[\w\-.%?=&#@]+\/[\w\-.%?=&#@]*)\s*\)"
 
 
 def split_nodes_images(old_nodes):
